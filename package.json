@@ -90,7 +90,10 @@
     },
     "slug": "ifttt-scripts",
     "subgroup": "misc",
-    "title": "IFTTT Scripts / Supporting Files"
+    "title": "IFTTT Scripts / Supporting Files",
+    "github_id": "R_kgDOHKQ1iA",
+    "gitlab_project_id": "35274536",
+    "gitlab_group_id": "6973111"
   },
   "changelog": {
     "displayTypes": [
