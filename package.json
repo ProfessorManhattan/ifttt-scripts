@@ -48,17 +48,17 @@
   },
   "optionalDependencies": {},
   "devDependencies": {
+    "@commitlint/config-conventional": "latest",
     "@types/node": "^16.11.6",
     "esbuild": "^0.12.29",
     "esbuild-node-externals": "^1.3.0",
     "eslint-config-strict-mode": "latest",
     "git-cz-emoji": "latest",
+    "handlebars-helpers": "latest",
     "jest-preset-ts": "latest",
     "prettier-config-sexy-mode": "latest",
     "semantic-release-config": "latest",
-    "typescript": "^4.5.5",
-    "@commitlint/config-conventional": "latest",
-    "handlebars-helpers": "latest"
+    "typescript": "^4.5.5"
   },
   "keywords": [
     "files",
@@ -74,13 +74,16 @@
     "node": ">=14.18.0"
   },
   "publishConfig": {
-    "@gitlab:registry": "https://gitlab.com/api/v4/projects//packages/npm/",
+    "@gitlab:registry": "https://gitlab.com/api/v4/projects/35274536/packages/npm/",
     "access": "public",
     "registry": "https://registry.npmjs.org/",
     "tag": "edge"
   },
   "blueprint": {
     "description": "Scripts / supporting files used in IFTTT recipes",
+    "github_id": "R_kgDOHKQ1iA",
+    "gitlab_group_id": "6973111",
+    "gitlab_project_id": "35274536",
     "group": "npm",
     "name": "IFTTT Scripts",
     "overview": "**[IFTTT](https://ifttt.com/explore)** is a cool web-app connector service. It lets users easily make triggers that respond to IoT devices, social media events, and webhooks. This is the repository we store backup copies of custom scripts we use to control our various IFTTT recipes / apps.",
@@ -90,10 +93,7 @@
     },
     "slug": "ifttt-scripts",
     "subgroup": "misc",
-    "title": "IFTTT Scripts / Supporting Files",
-    "github_id": "R_kgDOHKQ1iA",
-    "gitlab_project_id": "35274536",
-    "gitlab_group_id": "6973111"
+    "title": "IFTTT Scripts / Supporting Files"
   },
   "changelog": {
     "displayTypes": [
@@ -106,7 +106,9 @@
     "showAuthor": true
   },
   "commitlint": {
-    "extends": [],
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
     "helpUrl": "https://megabyte.space/docs/contributing/commits"
   },
   "eslintConfig": {

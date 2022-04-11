@@ -11,6 +11,38 @@
     eslint-visitor-keys "^2.1.0"
     semver "^6.3.0"
 
+"@babel/plugin-syntax-typescript@^7.16.7":
+  version "7.16.7"
+  resolved "7.16.7"
+  integrity sha512-YhUIJHHGkqPgEcMYkPCKTyGUdoGKWtopIycQyjJH8OjvRgOYsXsaKehLVPScKJWAULPxMa4N1vCe6szREFlZ7A==
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.16.7"
+
+"@babel/plugin-transform-typescript@^7.16.7":
+  version "7.16.8"
+  resolved "7.16.8"
+  integrity sha512-bHdQ9k7YpBDO2d0NVfkj51DpQcvwIzIusJ7mEUaMlbZq3Kt/U47j24inXZHQ5MDiYpCs+oZiwnXyKedE8+q7AQ==
+  dependencies:
+    "@babel/helper-create-class-features-plugin" "^7.16.7"
+    "@babel/helper-plugin-utils" "^7.16.7"
+    "@babel/plugin-syntax-typescript" "^7.16.7"
+
+"@babel/types@^7.0.0":
+  version "7.17.0"
+  resolved "7.17.0"
+  integrity sha512-TmKSNO4D5rzhL5bjWFcVHHLETzfQ/AmbKpKPOSjlP0WoHZ6L911fgoOKY4Alp/emzG4cHJdyN49zpgkbXFEHHw==
+  dependencies:
+    "@babel/helper-validator-identifier" "^7.16.7"
+    to-fast-properties "^2.0.0"
+
+"@babel/types@^7.3.0":
+  version "7.17.0"
+  resolved "7.17.0"
+  integrity sha512-TmKSNO4D5rzhL5bjWFcVHHLETzfQ/AmbKpKPOSjlP0WoHZ6L911fgoOKY4Alp/emzG4cHJdyN49zpgkbXFEHHw==
+  dependencies:
+    "@babel/helper-validator-identifier" "^7.16.7"
+    to-fast-properties "^2.0.0"
+
 "@commitlint/config-conventional@latest":
   version "16.2.1"
   resolved "16.2.1"
@@ -69,6 +101,33 @@
     "@xml-tools/parser" "^1.0.11"
     prettier ">=2.3"
 
+"@types/babel__generator@*":
+  version "7.6.4"
+  resolved "7.6.4"
+  integrity sha512-tFkciB9j2K755yrTALxD44McOrk+gfpIpvC3sxHjRawj6PfnQxrse4Clq5y/Rq+G3mrBurMax/lG8Qn2t9mSsg==
+  dependencies:
+    "@babel/types" "^7.0.0"
+
+"@types/babel__template@*":
+  version "7.4.1"
+  resolved "7.4.1"
+  integrity sha512-azBFKemX6kMg5Io+/rdGT0dkGreboUVR0Cdm3fz9QJWpaQGJRQXl7C+6hOTCZcMll7KFyEQpgbYI2lHdsS4U7g==
+  dependencies:
+    "@babel/parser" "^7.1.0"
+    "@babel/types" "^7.0.0"
+
+"@types/babel__traverse@*":
+  version "7.14.2"
+  resolved "7.14.2"
+  integrity sha512-K2waXdXBi2302XUdcHcR1jCeU0LL4TD9HRs/gk0N2Xvrht+G/BfJa4QObBQZfhMdxiCpV3COl5Nfq4uKTeTnJA==
+  dependencies:
+    "@babel/types" "^7.3.0"
+
+"@types/color-name@*":
+  version "1.1.1"
+  resolved "1.1.1"
+  integrity sha512-rr+OQyAjxze7GgWrSaJwydHStIhHq2lvY3BOC2Mj7KnzI7XK0Uw1TOOdI9lDoajEbSWLiYgoo4f1R51erQfhPQ==
+
 "@types/eslint@^7.2.13":
   version "7.29.0"
   resolved "7.29.0"
@@ -105,11 +164,28 @@
     "@types/istanbul-lib-coverage" "*"
 
 "@types/istanbul-reports@^3.0.0":
-  version "3.0.1"
-  resolved "3.0.1"
-  integrity sha512-c3mAZEuK0lvBp8tmuL74XRKn1+y2dcwOUpH7x4WrF6gk1GIgiluDRgMYQtw2OFcBvAJWlt6ASU3tSqxp0Uu0Aw==
+  version "1.1.2"
+  resolved "1.1.2"
+  integrity sha512-P/W9yOX/3oPZSpaYOCQzGqgCQRXn0FFO/V8bWrCQs+wLmvVVxk6CRBXALEvNs9OHIatlnlFokfhuDo2ug01ciw==
   dependencies:
+    "@types/istanbul-lib-coverage" "*"
     "@types/istanbul-lib-report" "*"
+
+"@types/jest-json-schema@^2.1.3":
+  version "2.1.4"
+  resolved "2.1.4"
+  integrity sha512-jAvF/IsPhF1bEqJxMR90z4vTCbuJAqDMG0stfsBceSInu1NphLKMR1HhjkDC54KvfAIGDlNHA1jyRCcSFqvPfg==
+  dependencies:
+    "@types/jest" "*"
+    ajv "^6.10.2"
+
+"@types/jest@*":
+  version "26.0.24"
+  resolved "26.0.24"
+  integrity sha512-E/X5Vib8BWqZNRlDxj9vYXhsDwPYbPINqKF9BsnSoon4RQ0D9moEuLD8txgyypFLH7J4+Lho9Nr/c8H0Fi+17w==
+  dependencies:
+    jest-diff "^26.0.0"
+    pretty-format "^26.0.0"
 
 "@types/json-schema@*":
   version "7.0.11"
@@ -128,20 +204,39 @@
   dependencies:
     "@types/node" "*"
 
+"@types/minimatch@*":
+  version "3.0.5"
+  resolved "3.0.5"
+  integrity sha512-Klz949h02Gz2uZCMGwDUSDS1YBlTdDDgbWHi+81l29tQALUtvz4rAYi5uoVhE5Lagoq6DeqAUlbrHvW/mXDgdQ==
+
 "@types/ms@*":
   version "0.7.31"
   resolved "0.7.31"
   integrity sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==
 
 "@types/node@*":
-  version "17.0.23"
-  resolved "17.0.23"
-  integrity sha512-UxDxWn7dl97rKVeVS61vErvw086aCYhDLyvRQZ5Rk65rZKepaFdm53GeqXaKBuOhED4e9uWq34IC3TdSdJJ2Gw==
+  version "16.11.26"
+  resolved "16.11.26"
+  integrity sha512-GZ7bu5A6+4DtG7q9GsoHXy3ALcgeIHP4NnL0Vv2wu0uUB/yQex26v0tf6/na1mm0+bS9Uw+0DFex7aaKr2qawQ==
 
 "@types/node@^16.11.6":
-  version "17.0.23"
-  resolved "17.0.23"
-  integrity sha512-UxDxWn7dl97rKVeVS61vErvw086aCYhDLyvRQZ5Rk65rZKepaFdm53GeqXaKBuOhED4e9uWq34IC3TdSdJJ2Gw==
+  version "16.11.26"
+  resolved "16.11.26"
+  integrity sha512-GZ7bu5A6+4DtG7q9GsoHXy3ALcgeIHP4NnL0Vv2wu0uUB/yQex26v0tf6/na1mm0+bS9Uw+0DFex7aaKr2qawQ==
+
+"@types/prop-types@*":
+  version "15.7.5"
+  resolved "15.7.5"
+  integrity sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==
+
+"@types/react@*":
+  version "18.0.1"
+  resolved "18.0.1"
+  integrity sha512-VnWlrVgG0dYt+NqlfMI0yUYb8Rdl4XUROyH+c6gq/iFCiZ805Vi//26UW38DHnxQkbDhnrIWTBiy6oKZqL11cw==
+  dependencies:
+    "@types/prop-types" "*"
+    "@types/scheduler" "*"
+    csstype "^3.0.2"
 
 "@types/responselike@*":
   version "1.0.0"
@@ -150,20 +245,51 @@
   dependencies:
     "@types/node" "*"
 
+"@types/scheduler@*":
+  version "0.16.2"
+  resolved "0.16.2"
+  integrity sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==
+
+"@types/source-list-map@*":
+  version "0.1.2"
+  resolved "0.1.2"
+  integrity sha512-K5K+yml8LTo9bWJI/rECfIPrGgxdpeNbj+d53lwN4QjW1MCwlkhUms+gtdzigTeUyBr09+u8BwOIY3MXvHdcsA==
+
+"@types/tapable@^1":
+  version "1.0.8"
+  resolved "1.0.8"
+  integrity sha512-ipixuVrh2OdNmauvtT51o3d8z12p6LtFW9in7U79der/kwejjdNchQC5UMn5u/KxNoM7VHHOs/l8KS8uHxhODQ==
+
+"@types/uglify-js@*":
+  version "3.13.2"
+  resolved "3.13.2"
+  integrity sha512-/xFrPIo+4zOeNGtVMbf9rUm0N+i4pDf1ynExomqtokIJmVzR3962lJ1UE+MmexMkA0cmN9oTzg5Xcbwge0Ij2Q==
+  dependencies:
+    source-map "^0.6.1"
+
 "@types/unist@*":
   version "2.0.6"
   resolved "2.0.6"
   integrity sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==
+
+"@types/webpack-sources@*":
+  version "3.2.0"
+  resolved "3.2.0"
+  integrity sha512-Ft7YH3lEVRQ6ls8k4Ff1oB4jN6oy/XmU6tQISKdhfh+1mR+viZFphS6WL0IrtDOzvefmJg5a0s7ZQoRXwqTEFg==
+  dependencies:
+    "@types/node" "*"
+    "@types/source-list-map" "*"
+    source-map "^0.7.3"
 
 "@types/yargs-parser@*":
   version "21.0.0"
   resolved "21.0.0"
   integrity sha512-iO9ZQHkZxHn4mSakYV0vFHAVDyEOIJQrV2uZ06HxEPcx+mt8swXoZHIbaaJ2crJYFfErySgktuTZ3BeLz+XmFA==
 
-"@types/yargs@^15.0.0":
-  version "17.0.10"
-  resolved "17.0.10"
-  integrity sha512-gmEaFwpj/7f/ROdtIlci1R1VYU1J4j95m8T+Tj3iBgiBFKg1foE/PSl93bBd5T9LDXNPo8UlNN6W0qwD8O5OaA==
+"@types/yargs@^16.0.0":
+  version "15.0.14"
+  resolved "15.0.14"
+  integrity sha512-yEJzHoxf6SyQGhBhIYGXQDSCkJjB6HohDShto7m8vaKg9Yp0Yn8+71J9eakh2bnPg6BfsH9PRMhiRTZnd4eXGQ==
   dependencies:
     "@types/yargs-parser" "*"
 
@@ -294,6 +420,19 @@ create-eslint-index@^1.0.0:
   integrity sha1-2VQ3LYbVeS/NZ+nyt5GxqxYkEbs=
   dependencies:
     lodash.get "^4.3.0"
+
+esbuild-node-externals@^1.3.0:
+  version "1.4.1"
+  resolved "1.4.1"
+  integrity sha512-ZFNGa6w1kYzn4wx9ty4eaItaOTSe2hWQZ6WXa/8guKJCiXL3XpW2CZT4gkx2OhfBKxpqaqa7ZeGK54ScoLSUdw==
+  dependencies:
+    find-up "5.0.0"
+    tslib "2.3.1"
+
+esbuild@^0.12.29:
+  version "0.12.29"
+  resolved "0.12.29"
+  integrity sha512-w/XuoBCSwepyiZtIRsKsetiLDUVGPVw1E/R3VTFSecIy8UR7Cq3SOtwKHJMFoVqqVG36aGkzh4e8BvpO1Fdc7g==
 
 eslint-ast-utils@^1.0.0:
   version "1.1.0"
@@ -1050,6 +1189,46 @@ handlebars-helpers@latest:
     to-gfm-code-block "^0.1.1"
     year "^0.2.1"
 
+jest-preset-ts@latest:
+  version "1.0.1"
+  resolved "1.0.1"
+  integrity sha512-e2WUxVG+iIrLdPX8hnR1yFd1zRXmCDcPyeHM6tnXlH/pnB7YB0pUg6bGHJ8qT+MYA3mCuEAPded/idHPBYjrHA==
+  dependencies:
+    "@jest-runner/electron" "^3.0.1"
+    "@storybook/addon-storyshots" "^6.3.12"
+    "@types/jest-json-schema" "^2.1.3"
+    expect-puppeteer "^6.0.0"
+    is-ci "^3.0.1"
+    jest "^27.2.5"
+    jest-chain "^1.1.5"
+    jest-dom "^4.0.0"
+    jest-html-reporters "^2.1.6"
+    jest-image-snapshot "^4.5.1"
+    jest-json-schema "^5.0.0"
+    jest-junit "^13.0.0"
+    jest-preset-angular "^10.1.0"
+    jest-puppeteer "^6.0.0"
+    jest-runner-eslint "^1.0.0"
+    jest-runner-groups "^2.1.0"
+    jest-runner-prettier "^0.3.7"
+    jest-runner-stylelint "^2.3.7"
+    jest-runner-tsc "^1.6.0"
+    jest-watch-master "^1.0.0"
+    jest-watch-select-projects "^2.0.0"
+    jest-watch-typeahead "^1.0.0"
+    ts-jest "^27.0.3"
+    tslib "^2.3.1"
+
+jest-runner-eslint@^1.0.0:
+  version "1.0.0"
+  resolved "1.0.0"
+  integrity sha512-LMlAaIQqIIySEThv651bfvzwX6J4nOu91RaEUYmXJgn4XXbM40rSMlBaC8ZrrFcFemu88MFlnrCLuYf7ZHE2sQ==
+  dependencies:
+    chalk "^3.0.0"
+    cosmiconfig "^6.0.0"
+    create-jest-runner "^0.6.0"
+    dot-prop "^5.3.0"
+
 jsonc-eslint-parser@^1.0.0:
   version "1.4.1"
   resolved "1.4.1"
@@ -1209,6 +1388,11 @@ toml-eslint-parser@^0.2.1:
   integrity sha512-lAESSx47NjCe/O9Y5dbAmP+U/EFvdxPRgA0Hp4TxCZP3Bs6hxRfLHxZvBuXvTGkVoK0DpYamPz/rCqYBzoFWVQ==
   dependencies:
     eslint-visitor-keys "^2.0.0"
+
+tslib@2.3.1:
+  version "2.3.1"
+  resolved "2.3.1"
+  integrity sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==
 
 tslib@^2.0.0:
   version "2.3.1"
