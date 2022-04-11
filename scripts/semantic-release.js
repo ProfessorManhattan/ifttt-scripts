@@ -9,8 +9,7 @@ let tag = 'opensource'
 
 // Ansible
 if (group === 'ansible' && subgroup === 'role') {
-  postTags.push('ansible')
-  postTags.push('role')
+  postTags.push('ansible', 'role')
   postMessage = true
   tag = 'ansible'
 } else {
@@ -19,7 +18,7 @@ if (group === 'ansible' && subgroup === 'role') {
 
 // Docker
 const dockerPublish = blueprint && blueprint.dockerPublish
-if (group === 'docker' || !!dockerPublish) {
+if (group === 'docker' || Boolean(dockerPublish)) {
   postTags.push('docker')
   postMessage = true
   tag = 'docker'
@@ -32,8 +31,7 @@ if (group === 'docker' || !!dockerPublish) {
 
 // Go
 if (group === 'go' && subgroup === 'cli') {
-  postTags.push('golang')
-  postTags.push('cli')
+  postTags.push('golang', 'cli')
   postMessage = true
   tag = 'golang'
 } else {
@@ -42,11 +40,8 @@ if (group === 'go' && subgroup === 'cli') {
 
 // NPM
 const npmPublish = blueprint && blueprint.npmPublish
-if (group === 'npm' || !!npmPublish) {
-  postTags.push('node')
-  postTags.push('npm')
-  postTags.push('js')
-  postTags.push('typescript')
+if (group === 'npm' || Boolean(npmPublish)) {
+  postTags.push('node', 'npm', 'js', 'typescript')
   postMessage = true
   tag = 'typescript'
   if (subgroup === 'cli') {
@@ -58,9 +53,7 @@ if (group === 'npm' || !!npmPublish) {
 
 // Packer
 if (group === 'packer') {
-  postTags.push('packer')
-  postTags.push('vagrant')
-  postTags.push('hashicorp')
+  postTags.push('packer', 'vagrant', 'hashicorp')
   postMessage = true
   tag = 'vagrant'
 } else {
@@ -69,7 +62,7 @@ if (group === 'packer') {
 
 // Python
 const pythonPublish = blueprint && blueprint.pythonPublish
-if (group === 'python' || !!pythonPublish) {
+if (group === 'python' || Boolean(pythonPublish)) {
   postTags.push('python')
   postMessage = true
   tag = 'pythoncoding'
@@ -80,7 +73,10 @@ if (group === 'python' || !!pythonPublish) {
   Slack.postToChannel6.skip()
 }
 
-const tags = postTags.filter((v, i, a) => a.indexOf(v) === i).map(i => '#' + i).join(' ')
+const tags = postTags
+  .filter((v, index, a) => a.indexOf(v) === index)
+  .map((index) => `#${index}`)
+  .join(' ')
 
 const variables = payload && payload['.variables.json']
 const githubOrg = variables && variables.profile && variables.profile.githubOrg
@@ -88,18 +84,25 @@ const githubRepo = blueprint && blueprint.repository && blueprint.repository.git
 const gitlabRepo = blueprint && blueprint.repository && blueprint.repository.gitlab
 const description = blueprint && blueprint.description
 const name = blueprint && blueprint.name
-const notes = payload && payload['.release.json'] && payload['.release.json'].notes.replaceAll('\n\n\n', '\n\n').replaceAll('\n\n\n\n', '\n\n').replace(/^[^\n]+\n/,'').replace(/^[\n]+\n/,'')
+const notes =
+  payload &&
+  payload['.release.json'] &&
+  payload['.release.json'].notes
+    .replaceAll('\n\n\n', '\n\n')
+    .replaceAll('\n\n\n\n', '\n\n')
+    .replace(/^[^\n]+\n/, '')
+    .replace(/^\n{2,}/, '')
 const releaseType = payload && payload['.release.json'] && payload['.release.json'].type
 const shortUrl = githubRepo
 const slug = blueprint && blueprint.slug
 const version = payload && payload['package.json'] && payload['package.json'].version
 
 // Slack
-const slackMessage = 'v' + version + ' of **' + name + '** is now available. Notable changes include:\n\n' + notes
-const slackTitle = 'New Major Release Available for ' + name
+const slackMessage = `v${version} of **${name}** is now available. Notable changes include:\n\n${notes}`
+const slackTitle = `New Major Release Available for ${name}`
 const slackUrl = githubRepo
-const slackImage = 'https://raw.githubusercontent.com/' + githubOrg + '/' + slug + '/master/logo.png'
-    
+const slackImage = `https://raw.githubusercontent.com/${githubOrg}/${slug}/master/logo.png`
+
 Slack.postToChannel1.setMessage(slackMessage)
 Slack.postToChannel1.setTitle(slackTitle)
 Slack.postToChannel1.setTitleUrl(slackUrl)
@@ -126,32 +129,32 @@ Slack.postToChannel6.setTitleUrl(slackUrl)
 Slack.postToChannel6.setImageUrl(slackImage)
 
 // Twitter
-const tweet = 'v' + version + ' of **' + name + '** is now available. Like ' + tags + '? Link: ' + shortUrl
+const tweet = `v${version} of **${name}** is now available. Like ${tags}? Link: ${shortUrl}`
 Twitter.postNewTweet.setTweet(tweet)
 
 // Reddit
 const redditTitles = [
-  'New Version of ' + name + ' Available',
-  name + ' just got an upgrade!',
-  'New Major Version of ' + name + ' Available',
-  'Release notes for latest major version of ' + name,
-  'Cool ' + tag + ' open source project named ' + name + ' updated!',
-  'Latest major update to ' + name + ' now available'
+  `New Version of ${name} Available`,
+  `${name} just got an upgrade!`,
+  `New Major Version of ${name} Available`,
+  `Release notes for latest major version of ${name}`,
+  `Cool ${tag} open source project named ${name} updated!`,
+  `Latest major update to ${name} now available`
 ]
 const redditTitle = redditTitles[Math.floor(Math.random() * redditTitles.length)]
-const redditText = 'v' + version + ' of **' + name + '** is now available. ' + description + ' New features include:\n\n' + notes
+const redditText = `v${version} of **${name}** is now available. ${description} New features include:\n\n${notes}`
 const subreddit = tag
 Reddit.submitTextPostReddit.setTitle(redditTitle)
 Reddit.submitTextPostReddit.setText(redditText)
 Reddit.submitTextPostReddit.setSubreddit(subreddit)
 
 // LinkedIn
-const linkedinMessage = 'v' + version + ' of **' + name + '** is now available. ' + description + ' Like ' + tags + '? Link: ' + shortUrl + '. Some of the updates included in the release are:\n\n' + notes
+const linkedinMessage = `v${version} of **${name}** is now available. ${description} Like ${tags}? Link: ${shortUrl}. Some of the updates included in the release are:\n\n${notes}`
 Linkedin.shareText.setMessage(linkedinMessage)
 
 // Facebook
 const facebookUrl = githubRepo
-const facebookMessage = 'v' + version + ' of **' + name + '** is now available. ' + description + ' Like ' + tags + '? Linky linky: ' + shortUrl
+const facebookMessage = `v${version} of **${name}** is now available. ${description} Like ${tags}? Linky linky: ${shortUrl}`
 FacebookPages.createLinkPage.setLinkUrl(facebookUrl)
 FacebookPages.createLinkPage.setMessage(facebookMessage)
 

@@ -10,23 +10,24 @@
   "autodoc_todo_description": "",
   "autodoc_variables_description": "",
   "badge_style": "for-the-badge",
+  "build_coverage_regex": "Lines\\s*:\\s*(\\d+.?\\d*)%",
   "commit_help_url": "https://megabyte.space/docs/contributing/commit-guidelines",
   "company": "Megabyte LLC",
   "copyright": "2020-2021",
   "docker_label_authors": "Brian Zalewski <brian@megabyte.space>",
   "docs": {
     "header_description_post": "<i></i>",
-    "header_description_pre": "Curated by ",
+    "header_description_pre": "Maintained by ",
     "header_title_post": "<i></i>",
     "header_title_pre": "<i></i>",
-    "link": "https://megabyte.space/docs/common/packer"
+    "link": "https://megabyte.space/docs/common/npm"
   },
   "email": {
     "help": "help@megabyte.space"
   },
   "emoji_beginnings": ["🚀 ", "🔥👉 ", "👉 ", "😉 ", "🆓 ", "🐴 ", "👀 ", "🎉 ", "", "", "", "", "", "", "", ""],
   "emoji_endings": [" 🚀", " 🔥🔥🔥", " 👏", " 😉", " 🐙", " 🐴", " 👀", " 🎟", " 🎉🎉", "", "", "", "", "", "", ""],
-  "github_prefix": "packer-",
+  "github_prefix": "<i></i>",
   "gitlab_pipelines": [
     {
       "active": true,
@@ -44,56 +45,6 @@
       "ref": "synchronize",
       "variable": {
         "REPOSITORY_UPDATE": true
-      }
-    },
-    {
-      "active": true,
-      "cron": "0 5 24 * *",
-      "description": "Hyper-V Automated Build",
-      "ref": "hyperv",
-      "variable": {
-        "AUTOMATED_BUILD": true,
-        "AUTOMATED_BUILD_TYPE": "hyperv-iso"
-      }
-    },
-    {
-      "active": true,
-      "cron": "0 5 25 * *",
-      "description": "KVM/QEMU Automated Build",
-      "ref": "qemu",
-      "variable": {
-        "AUTOMATED_BUILD": true,
-        "AUTOMATED_BUILD_TYPE": "qemu"
-      }
-    },
-    {
-      "active": true,
-      "cron": "0 5 26 * *",
-      "description": "Parallels Automated Build",
-      "ref": "parallels",
-      "variable": {
-        "AUTOMATED_BUILD": true,
-        "AUTOMATED_BUILD_TYPE": "parallels-iso"
-      }
-    },
-    {
-      "active": true,
-      "cron": "0 5 27 * *",
-      "description": "VirtualBox Automated Build",
-      "ref": "virtualbox",
-      "variable": {
-        "AUTOMATED_BUILD": true,
-        "AUTOMATED_BUILD_TYPE": "virtualbox-iso"
-      }
-    },
-    {
-      "active": true,
-      "cron": "0 5 28 * *",
-      "description": "VMWare Automated Build",
-      "ref": "vmware",
-      "variable": {
-        "AUTOMATED_BUILD": true,
-        "AUTOMATED_BUILD_TYPE": "vmware-iso"
       }
     }
   ],
@@ -114,7 +65,7 @@
     "owner": "installdoc"
   },
   "idPost": "megabyte.space",
-  "json_top_keys": "variables,type",
+  "json_top_keys": "",
   "license": "MIT",
   "link": {
     "chat": "https://app.slack.com/client/T01ABCG4NK1/C01NN74H0LW/details/",
@@ -241,7 +192,7 @@
   },
   "npm_publish_config_access": "public",
   "npm_standard_version_prerelease": "git add --all",
-  "npm_type": "module",
+  "npm_type": "commonjs",
   "organization": "Megabyte Labs",
   "overview": "[[ This is a new repository without the details filled in yet. Look for the section about blueprint data in the CONTRIBUTING.md to set up the project. ]]",
   "profile": {
@@ -359,13 +310,13 @@
       "wrangler": "https://gitlab.com/megabyte-labs/wrangler"
     }
   },
-  "scriptsBuild": "task packer:build",
+  "scriptsBuild": "task npm:build:tsconfig",
   "scriptsHelp": "task --menu",
   "scriptsPrepare": "npm run start && (test -f Taskfile.yml && task common:husky) || true",
   "scriptsReplaceThis": "\"",
   "scriptsReplaceWith": "\\\"",
   "scriptsStart": "bash start.sh",
-  "scriptsTest": "task lint:packer",
+  "scriptsTest": "task donothing",
   "sharp_instructions": [],
   "slackNotificationChannel": "#misc",
   "slackNotificationIcon": "https://gitlab.com/megabyte-labs/misc/assets/-/raw/master/logo/megabytelabs-color-icon-350x350.png",
@@ -374,7 +325,7 @@
     "author": "Brian Zalewski",
     "text": "I create open source projects out of love. Although I have a job, shelter, and as much fast food as I can handle, it would still be pretty cool to be appreciated by the community for something I have spent a lot of time and money on. Please consider sponsoring me! Who knows? Maybe I will be able to quit my job and publish open source full time."
   },
-  "subgroup": "desktop",
+  "subgroup": "misc",
   "teamsNotificationColor": "#1DA1F2",
   "teamsNotificationIcon": "https://gitlab.com/megabyte-labs/misc/assets/-/raw/master/logo/megabytelabs-color-icon-350x350.png",
   "title": "[[ package.json .blueprint.title - See CONTRIBUTING.md ]]",

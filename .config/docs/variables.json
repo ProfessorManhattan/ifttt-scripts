@@ -10,6 +10,7 @@
   "autodoc_todo_description": "",
   "autodoc_variables_description": "",
   "badge_style": "for-the-badge",
+  "build_coverage_regex": "Lines\\s*:\\s*(\\d+.?\\d*)%",
   "commit_help_url": "https://megabyte.space/docs/contributing/commit-guidelines",
   "company": "Megabyte LLC",
   "copyright": "2020-2021",
@@ -19,14 +20,14 @@
     "header_description_pre": "<i></i>",
     "header_title_post": "<i></i>",
     "header_title_pre": "<i></i>",
-    "link": "https://megabyte.space/docs/common/packer"
+    "link": "https://megabyte.space/docs/common/npm"
   },
   "email": {
     "help": "help@megabyte.space"
   },
   "emoji_beginnings": ["🚀 ", "🔥👉 ", "👉 ", "😉 ", "🆓 ", "🐴 ", "👀 ", "🎉 ", "", "", "", "", "", "", "", ""],
   "emoji_endings": [" 🚀", " 🔥🔥🔥", " 👏", " 😉", " 🐙", " 🐴", " 👀", " 🎟", " 🎉🎉", "", "", "", "", "", "", ""],
-  "github_prefix": "packer-",
+  "github_prefix": "<i></i>",
   "gitlab_pipelines": [
     {
       "active": true,
@@ -55,7 +56,7 @@
     "owner": "installdoc"
   },
   "idPost": "megabyte.space",
-  "json_top_keys": "variables,type",
+  "json_top_keys": "",
   "license": "MIT",
   "link": {
     "chat": "https://app.slack.com/client/T01ABCG4NK1/C01NN74H0LW/details/",

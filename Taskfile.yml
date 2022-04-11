@@ -71,6 +71,9 @@ includes:
   git:
     taskfile: ./.config/taskfiles/git/Taskfile.yml
     optional: true
+  git:bug:
+    taskfile: ./.config/taskfiles/git/Taskfile-bug.yml
+    optional: true
   git:github:
     taskfile: ./.config/taskfiles/git/Taskfile-github.yml
     optional: true

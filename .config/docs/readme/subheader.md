@@ -20,31 +20,28 @@
 </div>
 <br/>
 <div align="center">
-  <a title="Version: {{ pkg.version }}" href="{{ repository.github }}" target="_blank">
-    <img alt="Version: {{ pkg.version }}" src="https://img.shields.io/badge/version-{{ pkg.version }}-blue.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEUAAAD///+l2Z/dAAAAAXRSTlMAQObYZgAAACNJREFUCNdjIACY//+BEp9hhM3hAzYQwoBIAqEDYQrCZLwAAGlFKxU1nF9cAAAAAElFTkSuQmCC&cacheSeconds=2592000&style={{ alt_badge_style }}" />
+  <a href="https://www.npmjs.com/package/{{ pkg.name }}" title="Version {{ pkg.version }}" target="_blank">
+    <img alt="Version: {{ pkg.version }}" src="https://img.shields.io/badge/version-{{ pkg.version }}-blue.svg?cacheSeconds=2592000&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEUAAAD///+l2Z/dAAAAAXRSTlMAQObYZgAAACNJREFUCNdjIACY//+BEp9hhM3hAzYQwoBIAqEDYQrCZLwAAGlFKxU1nF9cAAAAAElFTkSuQmCC&style={{ alt_badge_style }}" />
   </a>
-  <a title="Pipeline status" href="{{ repository.gitlab }}{{ repository.location.commits.gitlab }}" target="_blank">
-    <img alt="Pipeline status" src="https://img.shields.io/gitlab/pipeline-status/{{ playbook_path }}?branch=master&label=build&logo=gitlab&style={{ alt_badge_style }}">
+  <a href="{{ repository.gitlab }}{{ repository.location.commits.gitlab }}" title="GitLab CI build status" target="_blank">
+    <img alt="Build status" src="https://img.shields.io/gitlab/pipeline-status/{{ repository.group.npm_path }}/{{ subgroup }}/{{ slug }}?branch=master&label=build&logo=gitlab&logoColor=white&style={{ alt_badge_style }}">
   </a>
-  <a title="Hyper-V build status" href="{{ repository.gitlab }}{{ repository.location.commits.gitlab }}" target="_blank">
-    <img alt="Hyper-V build status" src="https://img.shields.io/gitlab/pipeline-status/megabyte-labs/packer/{{ slug }}?branch=hyperv&label=build&logo=hyper&style={{ alt_badge_style }}">
+  <a href="https://www.npmjs.com/package/{{ pkg.name }}" title="Dependency status reported by Depfu" target="_blank">
+    <img alt="Dependency status reported by Depfu" src="https://img.shields.io/depfu/megabyte-labs/{{ customPackageName }}?logo=codeforces&logoColor=white&style={{ alt_badge_style }}&logo=npm" />
   </a>
-  <a title="KVM/QEMU build status" href="{{ repository.gitlab }}{{ repository.location.commits.gitlab }}" target="_blank">
-    <img alt="KVM/QEMU build status" src="https://img.shields.io/gitlab/pipeline-status/megabyte-labs/packer/{{ slug }}?branch=qemu&label=build&logo=qemu&style={{ alt_badge_style }}">
+  <a href="https://www.npmjs.com/package/{{ pkg.name }}" title="Zip file size" target="_blank">
+    <img alt="Zip file size" src="https://img.shields.io/bundlephobia/minzip/{{ pkg.name }}?style={{ alt_badge_style }}&logo=npm&logoColor=white" />
   </a>
-  <a title="Parallels build status" href="{{ repository.gitlab }}{{ repository.location.commits.gitlab }}" target="_blank">
-    <img alt="Parallels build status" src="https://img.shields.io/gitlab/pipeline-status/megabyte-labs/packer/{{ slug }}?branch=parallels&label=build&logo=macos&style={{ alt_badge_style }}">
+  <a href="https://www.npmjs.com/package/{{ pkg.name }}" title="Total downloads of {{ pkg.name }} on npmjs.org" target="_blank">
+    <img alt="Total downloads of {{ pkg.name }} on npmjs.org" src="https://img.shields.io/npm/dt/{{ pkg.name }}?style={{ alt_badge_style }}&logo=npm&logoColor=white" />
   </a>
-  <a title="VirtualBox build status" href="{{ repository.gitlab }}{{ repository.location.commits.gitlab }}" target="_blank">
-    <img alt="VirtualBox build status" src="https://img.shields.io/gitlab/pipeline-status/megabyte-labs/packer/{{ slug }}?branch=virtualbox&label=build&logo=virtualbox&style={{ alt_badge_style }}">
+  <a href="https://snyk.io/advisor/npm-package/{{ pkg.name }}" title="Number of vulnerabilities from Snyk scan on {{ pkg.name }}" target="_blank">
+    <img alt="Number of vulnerabilities from Snyk scan on {{ pkg.name }}" src="https://img.shields.io/snyk/vulnerabilities/npm/{{ pkg.name }}?style={{ alt_badge_style }}&logo=snyk&logoColor=white" />
   </a>
-  <a title="VMWare build status" href="{{ repository.gitlab }}{{ repository.location.commits.gitlab }}" target="_blank">
-    <img alt="VMWare build status" src="https://img.shields.io/gitlab/pipeline-status/megabyte-labs/packer/{{ slug }}?branch=vmware&label=build&logo=vmware&style={{ alt_badge_style }}">
+  <a href="{{ website.documentation }}/{{ group }}" target="_blank">
+    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg?logo=readthedocs&logoColor=white&style={{ alt_badge_style }}" />
   </a>
-  <a title="Documentation" href="{{ link.docs }}/{{ group }}" target="_blank">
-    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg?logo=readthedocs&style={{ alt_badge_style }}" />
-  </a>
-  <a title="License: {{ license }}" href="{{ repository.github }}{{ repository.location.license.github }}" target="_blank">
+  <a href="{{ repository.github }}{{ repository.location.license.github }}" target="_blank">
     <img alt="License: {{ license }}" src="https://img.shields.io/badge/license-{{ license }}-yellow.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEUAAAD///+l2Z/dAAAAAXRSTlMAQObYZgAAAHpJREFUCNdjYOD/wMDAUP+PgYHxhzwDA/MB5gMM7AwMDxj4GBgKGGQYGCyAEEgbMDDwAAWAwmk8958xpIOI5zKH2RmOyhxmZjguAiKmgIgtQOIYmFgCIp4AlaQ9OczGkJYCJEAGgI0CGwo2HmwR2Eqw5SBnNIAdBHYaAJb6KLM15W/CAAAAAElFTkSuQmCC&style={{ alt_badge_style }}" />
   </a>
 </div>

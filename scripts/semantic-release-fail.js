@@ -13,7 +13,7 @@ if (!(group === 'ansible' && subgroup === 'role')) {
 
 // Docker
 const dockerPublish = blueprint && blueprint.dockerPublish
-if (!(group === 'docker' || !!dockerPublish)) {
+if (!(group === 'docker' || Boolean(dockerPublish))) {
   Slack.postToChannel2.skip()
 }
 
@@ -24,7 +24,7 @@ if (!(group === 'go' && subgroup === 'cli')) {
 
 // NPM
 const npmPublish = blueprint && blueprint.npmPublish
-if (!(group === 'npm' || !!npmPublish)) {
+if (!(group === 'npm' || Boolean(npmPublish))) {
   Slack.postToChannel6.skip()
 }
 
@@ -35,24 +35,31 @@ if (group !== 'packer') {
 
 // Python
 const pythonPublish = blueprint && blueprint.pythonPublish
-if (!(group === 'python' || !!pythonPublish)) {
+if (!(group === 'python' || Boolean(pythonPublish))) {
   Slack.postToChannel5.skip()
 }
 
 const variables = payload && payload['.variables.json']
 const githubOrg = variables && variables.profile && variables.profile.githubOrg
 const name = blueprint && blueprint.name
-const notes = payload && payload['.release.json'] && payload['.release.json'].notes.replaceAll('\n\n\n', '\n\n').replaceAll('\n\n\n\n', '\n\n').replace(/^[^\n]+\n/,'').replace(/^[\n]+\n/,'')
+const notes =
+  payload &&
+  payload['.release.json'] &&
+  payload['.release.json'].notes
+    .replaceAll('\n\n\n', '\n\n')
+    .replaceAll('\n\n\n\n', '\n\n')
+    .replace(/^[^\n]+\n/, '')
+    .replace(/^\n{2,}/, '')
 const releaseType = payload && payload['.release.json'] && payload['.release.json'].type
-const shortUrl = gitlabRepo + '/-/jobs/' + (payload && payload['CI_JOB_ID'])
+const shortUrl = `${gitlabRepo}/-/jobs/${payload && payload.CI_JOB_ID}`
 const slug = blueprint && blueprint.slug
 
 // Slack
-const slackMessage = 'The latest release of ' + name + ' cannot be published until the pipeline is fixed! Pipeline URL: ' + shortUrl + '. The notes that were generated for the build are:\n\n' + notes
-const slackTitle = 'Semantic Release Failed for ' + name
+const slackMessage = `The latest release of ${name} cannot be published until the pipeline is fixed! Pipeline URL: ${shortUrl}. The notes that were generated for the build are:\n\n${notes}`
+const slackTitle = `Semantic Release Failed for ${name}`
 const slackUrl = shortUrl
-const slackImage = 'https://raw.githubusercontent.com/' + githubOrg + '/' + slug + '/master/logo.png'
-    
+const slackImage = `https://raw.githubusercontent.com/${githubOrg}/${slug}/master/logo.png`
+
 Slack.postToChannel1.setMessage(slackMessage)
 Slack.postToChannel1.setTitle(slackTitle)
 Slack.postToChannel1.setTitleUrl(slackUrl)
@@ -78,10 +85,12 @@ Slack.postToChannel6.setTitle(slackTitle)
 Slack.postToChannel6.setTitleUrl(slackUrl)
 Slack.postToChannel6.setImageUrl(slackImage)
 
-if (packageJson.contributors && packageJson.contributors.length) {
+if (packageJson.contributors && packageJson.contributors.length > 0) {
   Gmail.sendAnEmail.setTo(packageJson.contributors.map((x: any) => x.email).join(', '))
-  Gmail.sendAnEmail.setSubject('Help! Semantic Release failure on the ' + name + ' pipeline!')
-  Gmail.sendAnEmail.setBody('You are receiving this alert because you are listed as a contributor on the ' + name + ' project.\n\nThe error occurred at ' + MakerWebhooks.jsonEvent.OccurredAt + '.\n\nThe GitLab repository URL is ' + gitlabRepo + '\n\nThe GitHub mirror URL is ' + githubRepo + '\n\nThe release notes acquired from the build before it failed were:\n\n' + notes + '\n\n**The failed pipeline URL is ' + shortUrl + '**')
+  Gmail.sendAnEmail.setSubject(`Help! Semantic Release failure on the ${name} pipeline!`)
+  Gmail.sendAnEmail.setBody(
+    `You are receiving this alert because you are listed as a contributor on the ${name} project.\n\nThe error occurred at ${MakerWebhooks.jsonEvent.OccurredAt}.\n\nThe GitLab repository URL is ${gitlabRepo}\n\nThe GitHub mirror URL is ${githubRepo}\n\nThe release notes acquired from the build before it failed were:\n\n${notes}\n\n**The failed pipeline URL is ${shortUrl}**`
+  )
 } else {
   Gmail.sendAnEmail.skip()
 }
